@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize/types");
 const { sequelize } = require(".");
 
-module.exports = runction(sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
     const Monster = sequelize.define("Monster", {
         monster_id: {
             type: DataTypes.INTEGER,
@@ -88,4 +88,6 @@ module.exports = runction(sequelize, DataTypes) {
         },
         PRIMARY_KEY (monster_id)
     })
+
+    return Monster
 }
