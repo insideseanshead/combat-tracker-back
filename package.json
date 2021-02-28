@@ -1,0 +1,24 @@
+{
+  "name": "combat-tracker-back",
+  "version": "1.0.0",
+  "description": "Back end data mySQL database for a Warhammer Combat Tracker app and beastiary.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/insideseanshead/combat-tracker-back.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/insideseanshead/combat-tracker-back/issues"
+  },
+  "homepage": "https://github.com/insideseanshead/combat-tracker-back#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.5.0"
+  }
+}
