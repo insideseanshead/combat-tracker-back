@@ -4,8 +4,9 @@
   "description": "Back end data mySQL database for a Warhammer Combat Tracker app and beastiary.",
   "main": "index.js",
   "scripts": {
-    "start": "npm app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "seed": "node fixtures/seedDB.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
     "express": "^4.17.1",
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.7",
-    "sequelize": "^6.5.0"
+    "sequelize": "^6.5.0",
+    "sequelize-fixtures": "^1.2.0"
   }
 }
