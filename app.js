@@ -2,15 +2,19 @@ const express = require("express");
 const { Sequelize } = require("sequelize");
 const db = require("./models");
 
+const routes = require('./routes')
+
 const app = express();
 
 // Database
 const database = require("./config/database");
 
 // Index Route
-app.get("/", (req, res) => res.sent("test"));
+// app.get("/", (req, res) => res.sent("test"));
 
 // Monster Routes
+app.use(routes)
+
 
 // Set Port
 const PORT = process.env.PORT || 3000;
