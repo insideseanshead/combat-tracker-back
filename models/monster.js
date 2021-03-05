@@ -1,13 +1,10 @@
-const { DataTypes } = require("sequelize/types");
-const { sequelize } = require(".");
-
 module.exports = function(sequelize, DataTypes) {
     const Monster = sequelize.define("Monster", {
-        monster_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            AUTO_INCREMENT
-        },
+        // monster_id: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     AUTO_INCREMENT
+        // },
         img: {
             type: DataTypes.STRING
         },
@@ -15,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING
         },
         description: {
-            type: DataTypes.STRING
+            type: DataTypes.TEXT
         },
         weaponSkill: {
             type: DataTypes.STRING
@@ -66,27 +63,27 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING
         },
         skills: {
-            type: DataTypes.STRING
+            type: DataTypes.TEXT
         },
         talents: {
-            type: DataTypes.STRING
+            type: DataTypes.TEXT
         },
         specialRules: {
-            type: DataTypes.STRING
+            type: DataTypes.TEXT
         },
         armour: {
-            type: DataTypes.STRING
+            type: DataTypes.TEXT
         },
         armourPoints: {
-            type: DataTypes.STRING
+            type: DataTypes.TEXT
         },
         weapons: {
-            type: DataTypes.STRING
+            type: DataTypes.TEXT
         },
         slaughterMargin: {
             type: DataTypes.STRING
-        },
-        PRIMARY_KEY (monster_id)
+        }
+        // PRIMARY_KEY (monster_id)
     })
 
     return Monster

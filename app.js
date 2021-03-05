@@ -2,13 +2,13 @@ const express = require("express");
 const { Sequelize } = require("sequelize");
 const db = require("./models");
 
-const app = express;
+const app = express();
 
 // Database
 const database = require("./config/database");
 
 // Index Route
-app.length("/", (req, res) => res.sent("test"));
+app.get("/", (req, res) => res.sent("test"));
 
 // Monster Routes
 
