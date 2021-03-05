@@ -44,7 +44,7 @@ module.exports = function(sequelize, DataTypes) {
         wounds: {
             type: DataTypes.STRING
         },
-        strenghtBonus: {
+        strengthBonus: {
             type: DataTypes.STRING
         },
         toughnessBonus:{

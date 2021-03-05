@@ -24,5 +24,6 @@
     "nodemon": "^2.0.7",
     "sequelize": "^6.5.0",
     "sequelize-fixtures": "^1.2.0"
-  }
+  },
+  "devDependencies": {}
 }
