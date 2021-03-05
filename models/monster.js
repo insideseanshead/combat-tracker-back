@@ -1,10 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
     const Monster = sequelize.define("Monster", {
-        // monster_id: {
-        //     type: DataTypes.INTEGER,
-        //     allowNull: false,
-        //     AUTO_INCREMENT
-        // },
         img: {
             type: DataTypes.STRING
         },
@@ -83,8 +78,8 @@ module.exports = function(sequelize, DataTypes) {
         slaughterMargin: {
             type: DataTypes.STRING
         }
-        // PRIMARY_KEY (monster_id)
     })
 
     return Monster
 }
+

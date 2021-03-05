@@ -1,23 +1,20 @@
 const express = require("express");
-const { Sequelize } = require("sequelize");
 const db = require("./models");
+const cors = require('cors')
 
-const routes = require('./routes')
+// const routes = require('./routes')
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
-// Database
-const database = require("./config/database");
+app.use(express.urlencoded({extended: true}))
+app.use(express.json());
 
-// Index Route
-// app.get("/", (req, res) => res.sent("test"));
+app.use(cors())
 
-// Monster Routes
-app.use(routes)
-
-
-// Set Port
-const PORT = process.env.PORT || 3000;
+// Routes
+const routes = require("./controllers/")
+app.use(routes);
 
 //Sync sequlize models and start app
 db.sequelize.sync({ force: false }).then(function () {
