@@ -32,7 +32,7 @@ module.exports = function(sequelize, DataTypes) {
         intelligence: {
             type: DataTypes.STRING
         },
-        willpower: {
+        willPower: {
             type: DataTypes.STRING
         },
         fellowship: {
