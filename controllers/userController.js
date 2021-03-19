@@ -53,19 +53,20 @@ router.get('/secrets',(req,res)=>{
     if(!req.headers.authorization) {
         return res.status(401).send('no auth header')
     }
-    console.log(req.headers.authorization);
-    res.send('stuff')
-    // token = request.headers.authorization.split(' ')[1]
-    // console.log(token);
-    // const loggedInUser = jwt.verify(token, 'secrets', (err,data) =>{
-    //     if(err) {
-    //         return false
-    //     }
-    //     else {
-    //         return data
-    //     }
-    // });
-    // console.log(loggedInUser)
+    // console.log(req.headers.authorization);
+    
+    token = req.headers.authorization.split(' ')[1]
+    console.log(token);
+    const loggedInUser = jwt.verify(token, 'secretString', (err,data) =>{
+        if(err) {
+            return false
+        }
+        else {
+            return data
+        }
+    });
+    console.log(loggedInUser)
+    res.json(loggedInUser)
 })
 
 module.exports = router
