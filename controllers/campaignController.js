@@ -3,6 +3,8 @@ var router = express.Router();
 const jwt = require('jsonwebtoken');
 const db = require("../models");
 
+// =========================================================================
+// refactor checkAuthStatus to a utility later.
 const checkAuthStatus = request => {
     if(!request.headers.authorization) {
         return false
@@ -21,6 +23,7 @@ const checkAuthStatus = request => {
     console.log(loggedInUser)
     return loggedInUser
 }
+// ==========================================================================
 
 router.get("/",(req,res)=>{
     db.Campaign.findAll().then(campaigns=>{
