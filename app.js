@@ -10,7 +10,13 @@ const allRoutes = require('./controllers')
 app.use(express.urlencoded({extended: true}))
 app.use(express.json());
 
-app.use(cors())
+// Production CORS
+app.use(cors({
+  origin: ["http://whfr-tracker.herokuapp.com/"]
+}))
+
+// DEV CORS
+// app.use(cors())
 
 app.use('/', allRoutes)
 
