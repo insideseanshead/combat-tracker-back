@@ -5,6 +5,7 @@ module.exports = function(sequelize, DataTypes) {
 
     Encounter.associate = function(models) {
         Encounter.belongsTo(models.Campaign);
+        Encounter.belongsTo(models.User)
     }
 
     return Encounter; 
