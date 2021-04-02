@@ -67,6 +67,8 @@ router.post("/", (req, res) => {
     if (campaignData.UserId === loggedInUser.id) {
       db.Encounter.create({
         name: req.body.name,
+        UserId: loggedInUser.id,
+        CampaignId:req.body.campaignId
       })
         .then((newEncounter) => {
           return res.json(newEncounter);
@@ -75,6 +77,8 @@ router.post("/", (req, res) => {
           console.log(err);
           return res.status(500).send("not your campaign");
         });
+    } else {
+        return res.status(401).send('Not your campaign')
     }
   });
 });
