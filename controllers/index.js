@@ -4,6 +4,7 @@ var router = express.Router();
 const monsterRoutes = require("./monsterRoutes");
 const userRoutes=require('./userController')
 const campaignRoutes=require('./campaignController')
+const encounterRoutes=require('./encounterController')
 
 router.get("/",(req,res)=>{
     res.send("Monster time")
@@ -11,6 +12,7 @@ router.get("/",(req,res)=>{
 
 router.use('/api/users', userRoutes)
 router.use('/api/campaign', campaignRoutes)
+router.use('/api/encounters', campaignRoutes)
 router.use("/api/monsters", monsterRoutes)
 
 module.exports = router
