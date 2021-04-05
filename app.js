@@ -11,12 +11,12 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json());
 
 // Production CORS
-// app.use(cors({
-//   origin: ["http://whfr-tracker.herokuapp.com/"]
-// }))
+app.use(cors({
+  origin: ["http://whfr-tracker.herokuapp.com/"]
+}))
 
 // DEV CORS
-app.use(cors())
+// app.use(cors())
 
 app.use('/', allRoutes)
 
