@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const db = require("../models");
 
 // CHECK AUTHENTICATION
-const checkAuthStatus = (request) => {
+const checkAuthStatus = request => {
   if (!request.headers.authorization) {
     return false;
   }
@@ -37,10 +37,10 @@ router.get("/", (req, res) => {
 });
 
 // GET ONE ENCOUNTER
-router.get(":/", (req, res) => {
+router.get("/:id", (req, res) => {
   db.Encounter.findOne({
     where: {
-      id: req.params.id,
+      id:req.params.id,
     },
   })
     .then((dbEncounter) => {
