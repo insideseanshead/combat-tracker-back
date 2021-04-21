@@ -34,7 +34,7 @@ router.get("/", (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).send("something went wrong");
+      res.status(500).send(err);
     });
 });
 
