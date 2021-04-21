@@ -12,7 +12,7 @@ router.get("/",(req,res)=>{
 
 router.use('/api/users', userRoutes)
 router.use('/api/campaign', campaignRoutes)
-router.use('/api/encounters', campaignRoutes)
+router.use('/api/encounters', encounterRoutes)
 router.use("/api/monsters", monsterRoutes)
 
 module.exports = router
