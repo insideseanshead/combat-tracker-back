@@ -24,6 +24,7 @@ module.exports = function(sequelize, DataTypes) {
 
     Character.associate = function(models) {
         Character.belongsTo(models.Campaign);
+        Character.belongsTo(models.User)
     }
 
     return Character

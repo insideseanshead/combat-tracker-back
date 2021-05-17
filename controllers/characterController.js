@@ -25,13 +25,74 @@ const checkAuthStatus = request => {
 };
 
 // GET ALL CHARACTERS
-
+router.get('/', (req,res)=>{
+    db.Character.findAll().then(characters=>{
+        res.json(characters);
+    }).catch(err=>{
+        console.log(err)
+        res.status(500).send('something went wrong')
+    })
+})
 
 // GET CHARACTER BY ID
-
+router.get('/:id', (req,res)=>{
+    db.Character.findOne({
+        where:{
+            id:req.params.id
+        }
+    }).then(dbCharacter=>{
+        res.json(dbCharacter);
+    }).catch(err=>{
+        console.log(err)
+        res.status(500).send('something went wrong')
+    })
+})
 
 // POST NEW CHARACTER
-
+router.post('/',(req,res)=>{
+    const loggedInUser = checkAuthStatus(req);
+    if(!loggedInUser){
+        return res.status(401).send('login first')
+    }
+    console.log(loggedInUser)
+    db.Campaign.findOne({
+        where:{
+            id:req.body.campaignId
+        }
+    }).then(campaignData=>{
+        if(campaignData.UserId===loggedInUser.id){
+            db.Character.create({
+                name: req.body.name,
+                player: req.body.player,
+                weaponSkill: req.body.weaponSkill,
+                ballisticSkill: req.body.ballisticSkill,
+                strength: req.body.strength,
+                toughness: req.body.toughness,
+                agility: req.body.agility,
+                intellegence: req.body.intellegence,
+                willPower: req.body.willPower,
+                fellowship: req.body.fellowship,
+                attacks: req.body.attacks,
+                wounds: req.body.wounds,
+                strengthBonus: req.body.strengthBonus,
+                toughnessBonus: req.body.toughnessBonus,
+                movement: req.body.movement,
+                magic: req.body.magic,
+                instanityPoints: req.body.instanityPoints,
+                fatePoints: req.body.fatePoints,
+                UserId:loggedInUser.id,
+                CampaignId: req.body.CampaignId
+            }).then(newCharacter=>{
+                return res.json(newCharacter)
+            }).catch(err=>{
+                console.log(err)
+                return res.status(500).send('Something went wrong')
+            })
+        } else {
+            return res.status(401).send('not your campaign')
+        }
+    })
+})
 
 // EDIT PUT CHARACTER INFO
 

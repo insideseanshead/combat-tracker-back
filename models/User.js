@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const { Model } = require('sequelize');
 
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define('User', {
@@ -18,7 +19,8 @@ module.exports = function(sequelize, DataTypes) {
 
     User.associate = function(models) {
       User.hasMany(models.Campaign);
-      User.hasMany(models.Encounter)
+      User.hasMany(models.Encounter);
+      User.hasMany(models.Character);
     }
 
     User.beforeCreate(function (user) {
