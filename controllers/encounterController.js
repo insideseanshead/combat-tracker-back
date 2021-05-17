@@ -84,7 +84,62 @@ router.post("/", (req, res) => {
 });
 
 // PUT (EDIT) ENCOUNTER
+router.put("/:id",(req,res)=>{
+  const loggedInUser = checkAuthStatus(req);
+  if(!loggedInUser){
+      return res.status(401).send('login first')
+  }
+  db.Encounter.findOne({
+      where:{
+          id:req.params.id
+      }
+  }).then(encounter=>{
+      if(loggedInUser.id===encounter.UserId){
+          db.Encounter.update({
+            name: req.body.name,
+            CampaignId:req.body.campaignId
+          },{
+              where:{
+                  id:encounter.id
+              }
+          }).then(editEncounter =>{
+              res.json(editEncounter)
+          }).catch(err=>{
+              console.log(err)
+              res.status(500).send('something went wrong')
+          })
+      } else {
+          return res.status(401).send("not your Encounter!")
+      }
+  })
+})
 
 // DELETE ENCOUNTER
+router.delete("/:id",(req,res)=>{
+  const loggedInUser = checkAuthStatus(req);
+  if(!loggedInUser){
+      return res.status(401).send('login first')
+  }
+  db.Encounter.findOne({
+      where:{
+          id:req.params.id
+      }
+  }).then(encounter=>{
+      if(loggedInUser.id===encounter.UserId){
+          db.Encounter.destroy({
+              where:{
+                  id:encounter.id
+              }
+          }).then(delEncounter =>{
+              res.json(delEncounter)
+          }).catch(err=>{
+              console.log(err)
+              res.status(500).send('something went wrong')
+          })
+      } else {
+          return res.status(401).send("not your encounter!")
+      }
+  })
+})
 
 module.exports = router;
