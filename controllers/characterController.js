@@ -95,6 +95,80 @@ router.post('/',(req,res)=>{
 })
 
 // EDIT PUT CHARACTER INFO
-
+router.put("/:id",(req,res)=>{
+    const loggedInUser = checkAuthStatus(req);
+    if(!loggedInUser){
+        return res.status(401).send('login first')
+    }
+    db.Character.findOne({
+        where:{
+            id:req.params.id
+        }
+    }).then(character=>{
+        if(loggedInUser.id===character.UserId){
+            db.Character.update({
+                name: req.body.name,
+                player: req.body.player,
+                weaponSkill: req.body.weaponSkill,
+                ballisticSkill: req.body.ballisticSkill,
+                strength: req.body.strength,
+                toughness: req.body.toughness,
+                agility: req.body.agility,
+                intellegence: req.body.intellegence,
+                willPower: req.body.willPower,
+                fellowship: req.body.fellowship,
+                attacks: req.body.attacks,
+                wounds: req.body.wounds,
+                strengthBonus: req.body.strengthBonus,
+                toughnessBonus: req.body.toughnessBonus,
+                movement: req.body.movement,
+                magic: req.body.magic,
+                instanityPoints: req.body.instanityPoints,
+                fatePoints: req.body.fatePoints,
+                CampaignId: req.body.CampaignId
+            },{
+                where:{
+                    id:character.id
+                }
+            }).then(editCharacter =>{
+                res.json(editCharacter)
+            }).catch(err=>{
+                console.log(err)
+                res.status(500).send('something went wrong')
+            })
+        } else {
+            return res.status(401).send("not your character!")
+        }
+    })
+})
 
 // DELETE CHARACTER
+router.delete("/:id",(req,res)=>{
+    const loggedInUser = checkAuthStatus(req);
+    if(!loggedInUser){
+        return res.status(401).send('login first')
+    }
+    db.Character.findOne({
+        where:{
+            id:req.params.id
+        }
+    }).then(character=>{
+        if(loggedInUser.id===character.UserId){
+            db.Character.destroy({
+                where:{
+                    id:character.id
+                }
+            }).then(delCharacter =>{
+                res.json(delCharacter)
+            }).catch(err=>{
+                console.log(err)
+                res.status(500).send('something went wrong')
+            })
+        } else {
+            return res.status(401).send("not your character!")
+        }
+    })
+})
+
+
+module.exports = router
