@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
         toughnessBonus: DataTypes.INTEGER,
         movement: DataTypes.INTEGER,
         magic: DataTypes.INTEGER,
-        insansityPoints: DataTypes.INTEGER,
+        insanityPoints: DataTypes.INTEGER,
         fatePoints: DataTypes.INTEGER
     });
 

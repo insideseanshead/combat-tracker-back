@@ -78,10 +78,10 @@ router.post('/',(req,res)=>{
                 toughnessBonus: req.body.toughnessBonus,
                 movement: req.body.movement,
                 magic: req.body.magic,
-                instanityPoints: req.body.instanityPoints,
+                insanityPoints: req.body.insanityPoints,
                 fatePoints: req.body.fatePoints,
                 UserId:loggedInUser.id,
-                CampaignId: req.body.CampaignId
+                CampaignId: req.body.campaignId
             }).then(newCharacter=>{
                 return res.json(newCharacter)
             }).catch(err=>{
