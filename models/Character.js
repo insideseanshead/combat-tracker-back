@@ -27,5 +27,5 @@ module.exports = function(sequelize, DataTypes) {
         Character.belongsTo(models.User)
     }
 
-    return Character
+    return Character;
 }

@@ -28,6 +28,7 @@ const checkAuthStatus = (request) => {
 router.get("/", (req, res) => {
   db.Campaign.findAll({
     include: [db.Encounter],
+    include: [db.Character]
   })
     .then((campaigns) => {
       res.json(campaigns);
