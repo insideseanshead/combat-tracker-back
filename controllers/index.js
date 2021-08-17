@@ -15,6 +15,6 @@ router.use("/api/users", userRoutes);
 router.use("/api/campaigns", campaignRoutes);
 router.use("/api/encounters", encounterRoutes);
 router.use("/api/monsters", monsterRoutes);
-router.use('/api/characters', characterRoutes);
+router.use('/api/character', characterRoutes);
 
 module.exports = router;
