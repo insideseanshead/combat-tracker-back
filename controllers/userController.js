@@ -68,8 +68,28 @@ router.post('/login', (req,res)=>{
     })
 })
 
+// router.get('/secretProfile',(req,res)=>{
+//     const loggedInUser = checkAuthStatus(req)
+//     console.log(loggedInUser)
+//     if(!loggedInUser){
+//         return res.status(401).send("invalid token")
+//     }
+//     db.User.findOne({
+//         where:{
+//             id:loggedInUser.id
+//         },
+//         include:[db.Campaign],
+        
+//     }).then(dbUser=>{
+//         res.json(dbUser)
+//     }).catch(err=>{
+//         console.log(err)
+//         res.status(500).send('error occured')
+//     })
+// })
+
 router.get('/secretProfile',(req,res)=>{
-    const loggedInUser = checkAuthStatus(req)
+    const loggedInUser = checkAuthStatus(req);
     console.log(loggedInUser)
     if(!loggedInUser){
         return res.status(401).send("invalid token")
@@ -78,12 +98,16 @@ router.get('/secretProfile',(req,res)=>{
         where:{
             id:loggedInUser.id
         },
-        include:[db.Campaign]
+        include:[{
+            model:db.Campaign,
+            include:[db.Character]
+        },
+    db.Character]
     }).then(dbUser=>{
         res.json(dbUser)
     }).catch(err=>{
         console.log(err)
-        res.status(500).send('error occured')
+        res.status(500).send("error occured")
     })
 })
 
